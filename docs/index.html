@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Fund Flow Dashboard</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="./css/styles.css" rel="stylesheet">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg bg-white border-bottom">
+  <div class="container-fluid px-3">
+    <a class="navbar-brand" href="./">Fund Flow Dashboard</a>
+    <div class="ms-auto d-flex gap-2">
+      <a class="btn btn-outline-primary btn-sm" href="./details.html">Details (Password)</a>
+    </div>
+  </div>
+</nav>
+
+<main class="container-fluid px-3 py-3">
+  <div class="row g-3">
+    <div class="col-12 col-xl-3">
+      <div class="card kpi-card shadow-sm">
+        <div class="card-body">
+          <div class="kpi-label">Total Inflow</div>
+          <div id="kpiInflow" class="kpi-value">-</div>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 col-xl-3">
+      <div class="card kpi-card shadow-sm">
+        <div class="card-body">
+          <div class="kpi-label">Total Outflow</div>
+          <div id="kpiOutflow" class="kpi-value">-</div>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 col-xl-3">
+      <div class="card kpi-card shadow-sm">
+        <div class="card-body">
+          <div class="kpi-label">Net</div>
+          <div id="kpiNet" class="kpi-value">-</div>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 col-xl-3">
+      <div class="card kpi-card shadow-sm">
+        <div class="card-body">
+          <div class="kpi-label">Transactions</div>
+          <div id="kpiCount" class="kpi-value">-</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card chart-card shadow-sm mt-3">
+    <div class="card-body">
+      <div class="row g-3 align-items-end">
+        <div class="col-12 col-md-2">
+          <label class="form-label small mb-1">From</label>
+          <input id="fDateFrom" type="date" class="form-control form-control-sm">
+        </div>
+        <div class="col-12 col-md-2">
+          <label class="form-label small mb-1">To</label>
+          <input id="fDateTo" type="date" class="form-control form-control-sm">
+        </div>
+        <div class="col-12 col-md-2">
+          <label class="form-label small mb-1">Direction</label>
+          <select id="fDirection" class="form-select form-select-sm">
+            <option value="all">All</option>
+            <option value="inflow">Inflow (Cr)</option>
+            <option value="outflow">Outflow (Dr)</option>
+          </select>
+        </div>
+        <div class="col-12 col-md-2">
+          <label class="form-label small mb-1">Purpose</label>
+          <select id="fPurpose" class="form-select form-select-sm"></select>
+        </div>
+        <div class="col-12 col-md-2">
+          <label class="form-label small mb-1">Bank</label>
+          <select id="fBank" class="form-select form-select-sm"></select>
+        </div>
+        <div class="col-12 col-md-2">
+          <label class="form-label small mb-1">Search</label>
+          <input id="fSearch" class="form-control form-control-sm" placeholder="Description, person, bank...">
+        </div>
+        <div class="col-12 d-flex gap-2">
+          <button id="btnReset" class="btn btn-outline-secondary btn-sm">Reset</button>
+          <span class="small-muted ms-auto">
+            Data range: <span id="metaDateRange">-</span> |
+            Generated: <span id="metaGenerated">-</span>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row g-3 mt-0">
+    <div class="col-12 col-xl-4">
+      <div class="card chart-card shadow-sm">
+        <div class="card-body">
+          <div class="fw-semibold mb-2">Inflow vs Outflow</div>
+          <canvas id="chartInOut" height="140"></canvas>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 col-xl-8">
+      <div class="card chart-card shadow-sm">
+        <div class="card-body">
+          <div class="fw-semibold mb-2">Monthly Inflow / Outflow / Net</div>
+          <canvas id="chartMonthly" height="140"></canvas>
+        </div>
+      </div>
+    </div>
+    <div class="col-12">
+      <div class="card chart-card shadow-sm">
+        <div class="card-body">
+          <div class="fw-semibold mb-2">Outflow by Purpose (Top 10)</div>
+          <canvas id="chartPurpose" height="120"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="alert alert-warning mt-3" role="alert">
+    <div class="fw-semibold mb-1">Static-site note (GitHub Pages)</div>
+    Password-gating on a static site is only a UI lock. If this repository is public, the JSON data is also public.
+    For real access control, host behind a server and require authentication.
+  </div>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script type="module" src="./js/summary.js"></script>
+</body>
+</html>

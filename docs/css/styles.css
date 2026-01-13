@@ -1,0 +1,16 @@
+:root { --ff-bg: #0b1220; --ff-card: #111b2e; --ff-muted: #9bb0d1; --ff-text: #e8eefc; }
+body { background: #f6f8fb; }
+.navbar-brand { font-weight: 600; letter-spacing: .2px; }
+.kpi-card { border-radius: 14px; }
+.kpi-value { font-size: 1.6rem; font-weight: 700; }
+.kpi-label { color: #6c757d; font-size: .9rem; }
+.small-muted { color: #6c757d; font-size: .85rem; }
+.chart-card { border-radius: 14px; }
+.table-responsive { border-radius: 14px; }
+.badge-soft { background: rgba(13,110,253,.1); color: #0d6efd; border: 1px solid rgba(13,110,253,.2); }
+.locked-overlay {
+  position: fixed; inset: 0; background: rgba(0,0,0,.55);
+  display: none; align-items: center; justify-content: center; z-index: 2000;
+}
+.locked-card { width: min(520px, 92vw); border-radius: 16px; }
+code { color: #0d6efd; }
