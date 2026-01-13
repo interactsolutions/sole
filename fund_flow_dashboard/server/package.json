@@ -1,0 +1,16 @@
+{
+  "name": "fund-flow-dashboard",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Fund Flow reporting dashboard (Bootstrap + Chart.js) backed by live Excel parsing.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "xlsx": "^0.18.5"
+  }
+}

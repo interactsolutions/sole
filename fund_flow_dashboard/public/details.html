@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta http-equiv="Cache-Control" content="no-store" />
+  <title>Fund Flow — Details</title>
+
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+        crossorigin="anonymous">
+  <link rel="stylesheet" href="./style.css" />
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark border-bottom border-secondary">
+    <div class="container-fluid">
+      <a class="navbar-brand fw-semibold" href="./index.html">Fund Flow Dashboard</a>
+      <div class="d-flex gap-2 align-items-center">
+        <button class="btn btn-outline-light btn-sm" id="btnUnlock">Unlock</button>
+        <button class="btn btn-outline-warning btn-sm" id="btnLock">Lock</button>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container-fluid py-3">
+    <div class="row g-3">
+      <div class="col-12">
+        <div class="card shadow-sm">
+          <div class="card-body">
+            <div class="d-flex flex-wrap gap-2 align-items-end">
+              <div class="filterItem">
+                <label class="form-label small text-secondary mb-1">From</label>
+                <input type="date" class="form-control form-control-sm" id="fFrom">
+              </div>
+              <div class="filterItem">
+                <label class="form-label small text-secondary mb-1">To</label>
+                <input type="date" class="form-control form-control-sm" id="fTo">
+              </div>
+              <div class="filterItem">
+                <label class="form-label small text-secondary mb-1">Purpose</label>
+                <select class="form-select form-select-sm" id="fPurpose"></select>
+              </div>
+              <div class="filterItem">
+                <label class="form-label small text-secondary mb-1">Bank</label>
+                <select class="form-select form-select-sm" id="fBank"></select>
+              </div>
+              <div class="filterItem">
+                <label class="form-label small text-secondary mb-1">Ref</label>
+                <select class="form-select form-select-sm" id="fRef"></select>
+              </div>
+              <div class="filterItem flex-grow-1">
+                <label class="form-label small text-secondary mb-1">Search</label>
+                <input type="text" class="form-control form-control-sm" id="fSearch" placeholder="description, instructed by, transferred to…">
+              </div>
+              <div class="filterItem">
+                <button class="btn btn-primary btn-sm" id="btnApply">Apply</button>
+                <button class="btn btn-outline-secondary btn-sm" id="btnReset">Reset</button>
+              </div>
+            </div>
+
+            <div class="mt-2">
+              <div class="alert alert-warning mb-0" id="lockBanner">
+                Locked. Click <b>Unlock</b> to enter password and view row-level details.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12">
+        <div class="card shadow-sm">
+          <div class="card-body">
+            <div class="d-flex justify-content-between align-items-center mb-2">
+              <div class="fw-semibold">Transactions</div>
+              <div class="text-secondary small" id="rowsMeta">—</div>
+            </div>
+
+            <div class="table-responsive">
+              <table class="table table-sm table-striped table-hover align-middle" id="txTable">
+                <thead class="table-dark" id="txHead"></thead>
+                <tbody id="txBody"></tbody>
+              </table>
+            </div>
+
+            <div class="text-secondary small mt-2" id="txFootnote"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Password modal -->
+  <div class="modal" tabindex="-1" id="pwModal">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Unlock Details</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p class="text-secondary small mb-2">
+            Enter the dashboard password. This is checked on the server; the table will load only if authorized.
+          </p>
+          <input type="password" class="form-control" id="pwInput" placeholder="Password">
+          <div class="text-danger small mt-2 d-none" id="pwError">Invalid password.</div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-primary" id="pwSubmit">Unlock</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="./details.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+          crossorigin="anonymous"></script>
+</body>
+</html>
