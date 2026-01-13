@@ -5,7 +5,7 @@
 const STORAGE_KEY = "ff_details_unlocked_v1";
 
 // Default hash = sha256("change-me")
-const DETAILS_PASSWORD_SHA256 = "b7a875fc1ea228b9061041b7cec4bd3c52ab3ce3c3d696d4ed9a5f35a51a2e68";
+const DETAILS_PASSWORD_SHA256 = "Executive1*4";
 
 async function sha256Hex(text) {
   const enc = new TextEncoder().encode(text);
